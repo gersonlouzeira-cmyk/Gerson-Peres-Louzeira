@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-hud: 'Rajdhani', system-ui, -apple-system, sans-serif;
+    --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: #020617;
+    color: #f1f5f9;
+  }
+}
+
+.font-hud {
+  font-family: var(--font-hud);
+}
+
+.font-mono-data {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Holographic Cyan Glow Effects */
+.hud-glow {
+  box-shadow: 0 0 25px -4px rgba(6, 182, 212, 0.35), inset 0 0 15px -2px rgba(6, 182, 212, 0.2);
+}
+
+.hud-glow-lg {
+  box-shadow: 0 0 45px -5px rgba(6, 182, 212, 0.5), inset 0 0 25px -3px rgba(6, 182, 212, 0.3);
+}
+
+.hud-text-glow {
+  text-shadow: 0 0 12px rgba(6, 182, 212, 0.65), 0 0 24px rgba(6, 182, 212, 0.3);
+}
+
+.hud-border {
+  border: 1px solid rgba(6, 182, 212, 0.3);
+}
+
+.hud-panel {
+  background: linear-gradient(135deg, rgba(8, 20, 32, 0.85) 0%, rgba(3, 7, 18, 0.95) 100%);
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  backdrop-filter: blur(12px);
+}
+
+/* Holographic Scanline Overlay */
+.scanlines {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 240, 255, 0.02) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.01),
+    rgba(0, 255, 0, 0.005),
+    rgba(0, 0, 255, 0.01)
+  );
+  background-size: 100% 4px, 6px 100%;
+  pointer-events: none;
+}
+
+/* Circular HUD Rotation Animations (Hardware accelerated for A04) */
+@keyframes hud-rotate-cw {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes hud-rotate-ccw {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes hud-pulse-core {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
+
+.animate-hud-cw {
+  animation: hud-rotate-cw 20s linear infinite;
+  will-change: transform;
+}
+
+.animate-hud-cw-fast {
+  animation: hud-rotate-cw 8s linear infinite;
+  will-change: transform;
+}
+
+.animate-hud-ccw {
+  animation: hud-rotate-ccw 26s linear infinite;
+  will-change: transform;
+}
+
+.animate-hud-pulse {
+  animation: hud-pulse-core 3s ease-in-out infinite;
+  will-change: transform, opacity;
+}

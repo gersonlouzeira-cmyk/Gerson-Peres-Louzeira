@@ -1,0 +1,6 @@
+{
+  "name": "JARVIS - Assistente IA Android",
+  "description": "Assistente de inteligência artificial futurista em Português Brasileiro para Android com controle por voz, HUD holográfico, automação segura e arquitetura de 40 camadas de segurança.",
+  "requestFramePermissions": ["camera", "microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
